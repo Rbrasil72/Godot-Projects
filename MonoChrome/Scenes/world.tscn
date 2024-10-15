@@ -1,0 +1,316 @@
+[gd_scene load_steps=18 format=3 uid="uid://orgxa8000o7u"]
+
+[ext_resource type="PackedScene" uid="uid://bi3djjbshydql" path="res://Scenes/player.tscn" id="1_f3l1q"]
+[ext_resource type="Environment" uid="uid://coh5r5d4ib25n" path="res://env.tres" id="1_lngi4"]
+[ext_resource type="Texture2D" uid="uid://bnqoiy1rips0q" path="res://Assets/Textures/Prototype Textures/Grey 2.png" id="2_f7akj"]
+[ext_resource type="Texture2D" uid="uid://bxykkpxpwgtjf" path="res://Assets/Textures/Prototype Textures/Green 2.png" id="4_klrmt"]
+[ext_resource type="Material" uid="uid://efk108xhxsf6" path="res://Assets/Textures/Prototype Textures/crouch_grid_mat.tres" id="5_r676w"]
+[ext_resource type="Texture2D" uid="uid://7etx773xq37c" path="res://Assets/Textures/Prototype Textures/Orange.png" id="6_sglpb"]
+[ext_resource type="Texture2D" uid="uid://c8ru70wvubjte" path="res://Assets/crosshair.png" id="7_l6x65"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_vsb76"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmgbo"]
+albedo_texture = ExtResource("2_f7akj")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu5ab"]
+albedo_texture = ExtResource("4_klrmt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_woi4l"]
+albedo_texture = ExtResource("6_sglpb")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_pcxav"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b3bes"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bisnr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0h5b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_up22a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wteq"]
+
+[node name="world" type="Node3D"]
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = ExtResource("1_lngi4")
+camera_attributes = SubResource("CameraAttributesPractical_vsb76")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="stage"]
+material_override = SubResource("StandardMaterial3D_gmgbo")
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="Building" type="CSGCombiner3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.57537, 13.3053, 0, -6.27007)
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="stage/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.50119, 2.65632, 11.1583)
+material_override = ExtResource("5_r676w")
+use_collision = true
+size = Vector3(25.4771, 4.31726, 14.8114)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="stage/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34249, 1.94034, 11.2367)
+material_override = SubResource("StandardMaterial3D_vu5ab")
+operation = 2
+use_collision = true
+size = Vector3(3.65649, 2.8853, 14.4898)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="stage/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72687, 1.94034, 11.2367)
+material_override = SubResource("StandardMaterial3D_vu5ab")
+operation = 2
+use_collision = true
+size = Vector3(3.65649, 2.8853, 14.4898)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="stage/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94058, 1.91721, 11.2077)
+material_override = SubResource("StandardMaterial3D_vu5ab")
+operation = 2
+use_collision = true
+size = Vector3(3.65649, 2.8853, 14.4301)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="stage/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378482, 1.72585, 13.5746)
+material_override = SubResource("StandardMaterial3D_vu5ab")
+operation = 2
+use_collision = true
+size = Vector3(2.65853, 2.45632, 1.17353)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="stage/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06803, 1.26899, 4.96942)
+material_override = SubResource("StandardMaterial3D_vu5ab")
+operation = 2
+use_collision = true
+size = Vector3(1.06033, 1.49671, 0.59826)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="stage/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62146, 1.26417, 4.93521)
+material_override = SubResource("StandardMaterial3D_vu5ab")
+operation = 2
+use_collision = true
+size = Vector3(1.06033, 1.48707, 0.655138)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="stage/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.35133, 1.03233, 4.95799)
+material_override = SubResource("StandardMaterial3D_vu5ab")
+operation = 2
+use_collision = true
+size = Vector3(1.555, 1.0234, 0.406781)
+
+[node name="BuildingDetails" type="Node3D" parent="stage/Building"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="stage/Building/BuildingDetails"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17968, 0.680357, 11.2391)
+size = Vector3(0.141479, 0.384277, 14.5154)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="stage/Building/BuildingDetails"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57537, 0.680357, 12.0204)
+size = Vector3(0.141479, 0.384277, 12.9528)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="stage/Building/BuildingDetails"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.504, 0.680357, 8.48482)
+size = Vector3(0.141479, 0.384277, 9.00684)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="stage/Building/BuildingDetails"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.504, 0.680357, 16.3274)
+size = Vector3(0.141479, 0.384277, 4.32343)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="stage/Building/BuildingDetails"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.34096, 0.680357, 18.4952)
+size = Vector3(0.141479, 0.384277, 3.62607)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="stage/Building/BuildingDetails"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894305, 0.680357, 8.48482)
+size = Vector3(0.141479, 0.384277, 9.00684)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="stage/Building/BuildingDetails"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894305, 0.680357, 16.3274)
+size = Vector3(0.141479, 0.384277, 4.32343)
+
+[node name="Lights" type="Node3D" parent="stage"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0423, 2.67631, 6.72119)
+light_color = Color(0.992157, 1, 0.964706, 1)
+light_energy = 0.5
+light_indirect_energy = 5.0
+light_size = 1.0
+light_specular = 6.0
+shadow_enabled = true
+shadow_bias = 0.15
+omni_range = 7.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="stage/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1357, 2.94032, 6.72119)
+light_color = Color(0.992157, 1, 0.964706, 1)
+light_energy = 0.5
+light_indirect_energy = 5.0
+light_size = 1.0
+light_specular = 6.0
+shadow_enabled = true
+shadow_bias = 0.15
+omni_range = 7.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="stage/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0423, 2.59018, 28.6126)
+light_color = Color(0.992157, 1, 0.964706, 1)
+light_indirect_energy = 5.0
+light_size = 1.0
+light_specular = 6.0
+shadow_enabled = true
+shadow_bias = 0.15
+omni_range = 7.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="stage/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5427, 2.67631, 6.72119)
+light_color = Color(0.992157, 1, 0.964706, 1)
+light_energy = 0.5
+light_indirect_energy = 5.0
+light_size = 1.0
+light_specular = 6.0
+shadow_enabled = true
+shadow_bias = 0.15
+omni_range = 7.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="stage/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5427, 2.6013, 16.0182)
+light_color = Color(0.992157, 1, 0.964706, 1)
+light_indirect_energy = 5.0
+light_size = 1.0
+light_specular = 6.0
+shadow_enabled = true
+shadow_bias = 0.15
+omni_range = 7.0
+omni_attenuation = 2.0
+
+[node name="Objects" type="Node3D" parent="stage"]
+
+[node name="movable object7" type="RigidBody3D" parent="stage/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9129, 1.07423, 5.25992)
+gravity_scale = 2.0
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/Objects/movable object7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0315762, 0, 0)
+material_override = SubResource("StandardMaterial3D_woi4l")
+mesh = SubResource("BoxMesh_pcxav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Objects/movable object7"]
+shape = SubResource("BoxShape3D_b3bes")
+
+[node name="movable object3" type="RigidBody3D" parent="stage/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3519, 1.08985, 6.60924)
+gravity_scale = 2.0
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/Objects/movable object3"]
+material_override = SubResource("StandardMaterial3D_woi4l")
+mesh = SubResource("BoxMesh_pcxav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Objects/movable object3"]
+shape = SubResource("BoxShape3D_bisnr")
+
+[node name="movable object8" type="RigidBody3D" parent="stage/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3367, 2.21085, 5.39414)
+gravity_scale = 2.0
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/Objects/movable object8"]
+material_override = SubResource("StandardMaterial3D_woi4l")
+mesh = SubResource("BoxMesh_pcxav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Objects/movable object8"]
+shape = SubResource("BoxShape3D_n0h5b")
+
+[node name="movable object4" type="RigidBody3D" parent="stage/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.353, 2.23132, 6.60163)
+gravity_scale = 2.0
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/Objects/movable object4"]
+material_override = SubResource("StandardMaterial3D_woi4l")
+mesh = SubResource("BoxMesh_pcxav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Objects/movable object4"]
+shape = SubResource("BoxShape3D_up22a")
+
+[node name="movable object5" type="RigidBody3D" parent="stage/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3491, 1.06683, 5.42343)
+gravity_scale = 2.0
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/Objects/movable object5"]
+material_override = SubResource("StandardMaterial3D_woi4l")
+mesh = SubResource("BoxMesh_pcxav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Objects/movable object5"]
+shape = SubResource("BoxShape3D_0wteq")
+
+[node name="movable object6" type="RigidBody3D" parent="stage/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2549, 1.06683, 5.11793)
+gravity_scale = 2.0
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/Objects/movable object6"]
+material_override = SubResource("StandardMaterial3D_woi4l")
+mesh = SubResource("BoxMesh_pcxav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Objects/movable object6"]
+shape = SubResource("BoxShape3D_0wteq")
+
+[node name="Player" parent="." instance=ExtResource("1_f3l1q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.0321, 1.51988, 6.70609)
+
+[node name="UI" type="Node3D" parent="."]
+
+[node name="Crosshair" type="Control" parent="UI"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/Crosshair"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/Crosshair/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_l6x65")
