@@ -1,6 +1,6 @@
 # Godot-Projects
 
-Both projects are very early concepts
+Both projects are very early concepts (notice the placeholder textures)
 
 # Mono-Chrome
 
